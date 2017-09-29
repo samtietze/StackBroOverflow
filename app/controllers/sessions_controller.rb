@@ -29,6 +29,7 @@ delete '/sessions' do
   redirect '/'
 end
 
+# GET RID OF THIS SHIT BEFORE FINAL
 get '/sessions/viewer' do
   session.inspect
 end
