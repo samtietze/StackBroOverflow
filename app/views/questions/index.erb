@@ -1,0 +1,14 @@
+<h2>Top Questions</h2>
+
+<% @questions.each do |question| %>
+  <div class="question-summary-container">
+    <h3><%= question.subject %></h3>
+    <div class="inline-summary-stats">
+      <%= question. %>
+    </div>
+    <div class="question-summary">
+      <%= question.time_display %> ||
+      <%= question.question_author.username %>
+    </div>
+  </div>
+<% end %>
