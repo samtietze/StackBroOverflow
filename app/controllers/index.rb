@@ -1,6 +1,6 @@
 get '/' do
 
-  redirect '/mitchells_voicemail'
+  redirect '/questions'
 end
 
 get '/mitchell' do

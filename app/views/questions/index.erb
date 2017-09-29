@@ -1,3 +1,6 @@
+<% if logged_in? %>
+  <a href="/questions/new">You got a question, bro?</a>
+<% end %>
 <h2>Top Questions</h2>
   <%= @comment.comment_body %>
 <% @questions.each do |question| %>

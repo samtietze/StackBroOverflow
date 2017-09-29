@@ -18,6 +18,6 @@ class Question < ApplicationRecord
   #   end
   # end
 
-  validates :user_id, :subject, :question_body, { null: false }
+  validates :question_author_id, :subject, :question_body, { presence: true }
   validates :question_body, { length: { maximum: 5000 } }
 end
