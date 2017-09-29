@@ -1,5 +1,34 @@
 <h2><%= @question.subject %></h2>
 
 <div class="question-page-container">
-  <%= @question.question_body %>
+
+  <div class="question-body-container">
+    <%= @question.question_body %>
+      <div class="question-comments-list-container">
+        <ul>
+          <% @question.comments.each do |comment| %>
+            <div class="question-comment-box">
+              <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"></a><%= comment.comment_author.username %> at <%= comment.created_at %></span>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+
+  <div class="question-answer-list-container">
+    <% @question.answers.each do |answer| %>
+      <div class="answer-container border-bottom">
+        <p class="answer-text">
+          <%= answer.answer_body %>
+        </p>
+        <span><%= answer.created_at %></span>
+        <div class="answerer-profile-box">
+          <a href="users/<%= answer.answer_author.id %>"><%= answer.answer_author.username %></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <footer>This is the bottom div, y'all</footer>
 </div>
