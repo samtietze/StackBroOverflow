@@ -1,8 +1,6 @@
 <h3>Have Another Idea for an Answer?</h3>
 
-<% if @errors %>
 <%= erb :"_errors", locals: {errors: @errors} %>
-<% end %>
 
 <form method="POST" action="/questions/:question_id/answers">
   <div class="form-field">

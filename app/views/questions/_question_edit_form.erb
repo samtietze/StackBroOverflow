@@ -1,3 +1,5 @@
-<form action='/questions/<%=  %>'>
-
+<form action='/questions/<%= question.id %>' method='post'>
+  <input type='hidden' name='_method' value='put'>
+  <%= erb :'questions/_question_fields', locals: { question: question } %>
+  <input type='submit' value='Submit, bro'>
 </form>
