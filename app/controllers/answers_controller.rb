@@ -14,7 +14,7 @@ end
 post '/questions/:question_id/answers' do
   authenticate!
   @question = Question.find(params[:question_id])
-  @answer = @question.answers.new(params[:answer])
+  @answer = Answer.new(params[:answer])
     if @answer.save
       # what here
       redirect "/questions/#{@question.id}/answers"

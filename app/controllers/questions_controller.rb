@@ -1,5 +1,5 @@
 get '/questions' do
-  @questions = Question.all
+  @questions = Question.order('created_at')
   @comment = Comment.first
   erb :'questions/index'
 end
@@ -18,6 +18,3 @@ get 'questions/:id/edit' do
 
   erb :'questions/edit'
 end
-
-
-

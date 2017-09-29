@@ -2,7 +2,7 @@
   <%= @comment.comment_body %>
 <% @questions.each do |question| %>
   <div class="question-summary-container">
-    <h3><%= question.subject %></h3>
+    <h3><a href="/questions/<%= question.id %>"><%= question.subject %></a></h3>
     <div class="inline-summary-stats">
       <%= question.pageviews %>
     </div>

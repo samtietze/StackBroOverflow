@@ -1,5 +1,53 @@
 <h2><%= @question.subject %></h2>
 
 <div class="question-page-container">
-  <%= @question.question_body %>
+<!-- begin QUESTIONS -->
+  <div class="question-box">
+      <p class="question-body-text">
+        <%= @question.question_body %>
+      </p>
+
+      <span>Asked on: <%= @question.created_at %></span>
+      <div class="question-author-box">
+        <span><a href="/users/<%= @question.question_author.id %>"><%= @question.question_author.username %></a></span>
+      </div>
+<!-- begin QUESTION COMMENTS -->
+      <div class="question-comments-list-container">
+        <ul>
+          <% @question.comments.each do |comment| %>
+            <div class="question-comment-box">
+              <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+<!-- begin ANSWERS -->
+  <div class="question-answer-list-container">
+    <% @question.answers.each do |answer| %>
+      <div class="answer-container border-bottom">
+        <p class="answer-text">
+          <%= answer.answer_body %>
+        </p>
+        <span>Answered on: <%= answer.created_at %></span>
+        <div class="answerer-profile-box">
+          <a href="users/<%= answer.answer_author.id %>"><%= answer.answer_author.username %></a>
+        </div>
+<!-- begin ANSWER COMMENTS -->
+        <div class="answer-comments-container">
+          <ul>
+            <% answer.comments.each do |comment| %>
+              <div class="answer-comment-box">
+                <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+
+  <footer>This is the bottom div, y'all</footer>
 </div>
