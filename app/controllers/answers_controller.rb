@@ -58,3 +58,18 @@ delete '/questions/:question_id/answers/:id' do
   @answer.destroy
   redirect  "/questions/#{@question.id}/answers"
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

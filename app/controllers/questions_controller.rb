@@ -1,6 +1,6 @@
 get '/questions' do
   @questions = Question.order('created_at')
-  @comment = Comment.first
+  # @comment = Comment.first
   erb :'questions/index'
 end
 
@@ -26,7 +26,7 @@ get '/questions/:id' do
   # TODO: Display the edit/delete buttons for questions,
     # answers, and comments based on their author_ids.
   @question = Question.find_by(id: params[:id])
-  @question.increment(:pageviews) unless @question.question_author = current_user
+  @question.increment(:pageviews) unless (@question.question_author == current_user)
   @question.save
 
   erb :'questions/show'
