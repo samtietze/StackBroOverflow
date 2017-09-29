@@ -1,10 +1,10 @@
 # seed file placeholder so github doesn't delete it. I don't know how this works.
 require 'faker'
-# 5.times do
-#   user = { username: Faker::Witcher.character, email: Faker::Internet.safe_email, password: "test123" }
+5.times do
+  user = { username: Faker::Witcher.character, email: Faker::Internet.safe_email, password: "test123" }
 
-#   new_user = User.create(user)
-# end
+  new_user = User.create(user)
+end
 
 
 2.times do

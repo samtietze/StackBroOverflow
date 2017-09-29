@@ -2,7 +2,7 @@
   <a href="/questions/new">You got a question, bro?</a>
 <% end %>
 <h2>Top Questions</h2>
-  <%= @comment.comment_body %>
+
 <% @questions.each do |question| %>
   <div class="question-summary-container">
     <h3><a href="/questions/<%= question.id %>"><%= question.subject %></a></h3>
