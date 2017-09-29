@@ -1,5 +1,5 @@
 
-
+##layout add
  ##create
 get '/users/new' do
   @user = User.new
