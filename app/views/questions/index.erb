@@ -7,8 +7,7 @@
       <%= question.pageviews %>
     </div>
     <div class="question-summary">
-      <%= question.time_display %> ||
-      <%= question.question_author.username %>
+      <span><%= question.created_at %> || <a href="/users/<%= question.question_author.id %>"><%= question.question_author.username %></a></span>
     </div>
   </div>
 <% end %>
