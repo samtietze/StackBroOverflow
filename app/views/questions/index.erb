@@ -1,0 +1,13 @@
+<h2>Top Questions</h2>
+  <%= @comment.comment_body %>
+<% @questions.each do |question| %>
+  <div class="question-summary-container">
+    <h3><%= question.subject %></h3>
+    <div class="inline-summary-stats">
+      <%= question.pageviews %>
+    </div>
+    <div class="question-summary">
+      <span><%= question.created_at %> || <a href="/users/<%= question.question_author.id %>"><%= question.question_author.username %></a></span>
+    </div>
+  </div>
+<% end %>

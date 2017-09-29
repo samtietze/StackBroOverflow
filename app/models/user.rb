@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :questions, foreign_key: "question_author_id"
   has_many :answers, foreign_key: "answer_author_id"
   has_many :votes, foreign_key: "voter_id"
+  has_many :comments, foreign_key: "comment_author_id"
 
   validates :username, :email, { presence: true }
   validates :email, :username, { uniqueness: true }
