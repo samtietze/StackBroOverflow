@@ -19,6 +19,24 @@
   <title></title>
 </head>
 <body>
+    <div class="container">
+    <nav>
+      <h1><a href="/">BroOverFlow</a></h1>
+      <ul>
+        <% if current_user %>
+        <li><a href="/users/<%= current_user.id %>">Hello, <%= current_user.username %></a></li>
+        <li><form method="POST" action="/sessions">
+              <input type="hidden" name="_method" value="DELETE" />
+              <input type="submit" class="button" value="Logout" />
+            </form>
+        </li>
+        <% else %>
+        <li><a href="/sessions/new">Login</a></li>
+        <li><a href="/users/new">Sign Up</a></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="main">
   <%= yield %>
 </body>
 </html>
