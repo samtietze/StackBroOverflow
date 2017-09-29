@@ -1,0 +1,24 @@
+<h3>Bro Up, bro</h3>
+
+<% if @user.errors.any? %>
+<%= erb :"_errors", locals: {errors: @user.errors} %>
+<% end %>
+
+<main class="login">
+ <form action="/users" method="post">
+  <div>
+    <label for="username">Username</label>
+    <input id="name" name="user[username]" type="text" />
+  </div>
+    <div>
+    <label for="email">Email</label>
+    <input id="user" name="user[email]" type="text"/>
+  </div>
+    <div>
+    <label for="password">Password</label>
+    <input id="password" name="user[password]" type="text"  />
+  </div>
+  <div>
+    <input name="commit" type="Submit" value="Register Bro Account">
+  </div>
+</main>
