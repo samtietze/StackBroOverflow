@@ -18,4 +18,3 @@ get 'questions/:id/edit' do
 
   erb :'questions/edit'
 end
-
