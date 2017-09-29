@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :username, :email, { presence: true }
   validates :email, :username, { uniqueness: true }
-  validates :validate_password
+  validate :validate_password
 
   def password
     @password ||= BCrypt::Password.new(encrypted_password)
