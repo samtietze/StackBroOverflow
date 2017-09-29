@@ -11,7 +11,7 @@ get '/questions/:question_id/answers/new' do
   erb :'answers/new'
 end
 
-post '/questions/:question_id/answers'
+post '/questions/:question_id/answers' do
   authenticate!
   @question = Question.find(params[:question_id])
   @answer = @question.answers.new(params[:answer])
@@ -45,11 +45,13 @@ put '/questions/:question_id/answers/:id' do
   if @answer.update(params[:answer])
     redirect "/questions/#{@question.id}/answers"
   else
-    @errors.@answer.errors.full_messages
+    @errors = @answer.errors.full_messages
     erb :'answers/edit'
   end
 
 end
+
+
 delete '/questions/:question_id/answers/:id' do
   @answer = Answer.find_by(id: params[:id])
   authorize!(@answer.user)
