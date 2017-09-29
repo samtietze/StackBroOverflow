@@ -3,24 +3,27 @@
 <div class="question-page-container">
 <!-- begin QUESTIONS -->
   <div class="question-box">
-      <p class="question-body-text">
-        <%= @question.question_body %>
-      </p>
+    <p class="question-body-text">
+      <%= @question.question_body %>
+    </p>
 
-      <span>Asked on: <%= @question.created_at %></span>
-      <div class="question-author-box">
-        <span><a href="/users/<%= @question.question_author.id %>"><%= @question.question_author.username %></a></span>
-      </div>
+    <span>Asked on: <%= @question.created_at %></span>
+    <div class="question-author-box">
+      <span><a href="/users/<%= @question.question_author.id %>"><%= @question.question_author.username %></a></span>
+    </div>
 <!-- begin QUESTION COMMENTS -->
-      <div class="question-comments-list-container">
-        <ul>
-          <% @question.comments.each do |comment| %>
-            <div class="question-comment-box">
-              <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
-            </div>
-          <% end %>
-        </ul>
-      </div>
+    <div class="question-comments-list-container">
+      <ul>
+        <% @question.comments.each do |comment| %>
+          <div class="question-comment-box">
+            <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+    <% if authorized?(@question.question_author) %>
+      <%= erb :'questions/_question_edit_form', locals: { question: @question } %>
+    <% end %>
   </div>
 <!-- begin ANSWERS -->
   <div class="question-answer-list-container">
