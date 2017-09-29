@@ -1,0 +1,38 @@
+<h2>@question.comments.create(comment)</h2>
+<h3>Hey Mitch. Sam here. Turn on your volume, please.</h3>
+<div class="mitch-face-killa">
+  <span>Hey, mitch. Add some Comments to the question.<%= `say "Hey, mitch. Add some Comments to the question."` %></span>
+
+  <p>
+    Heyy, mitch. Sam again. I thought you might want to know, we figured out you can add comments to Answers in the same way. Just pass the params hash.
+    <%= `say "Heyy, mitch. Sam again. I thought you might want to know, we figured out you can add comments to Answers in the same way. Just pass the params hash." ` %>
+  </p>
+
+
+  <article>
+    Holy. Fuck. Check this shit out, mitch:
+    <%= `say "Holy. Fuck. Check this shit out, mitch:" ` %>
+
+    <p>
+      comment = Comment.new
+=> #Comment id: nil, comment_author_id: nil, commentable_type: nil, commentable_id: nil, comment_body: nil, created_at: nil, updated_at: nil
+irb(main):027:0> comment.comment_author_id = 3<br>
+=> 3<br>
+irb(main):028:0> comment.comment_body = "This is some shit eh?"<br>
+=> "This is some shit eh?"<br>
+irb(main):029:0> comment<br>
+=> #Comment id: nil, comment_author_id: 3, commentable_type: nil, commentable_id: nil, comment_body: "This is some shit eh?", created_at: nil, updated_at: nil<br>
+      <br><em><strong><%= `say "Hey boy, you see how this is a comment object that hasn't been saved yet? Check this next block element out"` %>:</strong></em>
+    </p>
+  </article>
+
+  <footer>
+    <mark><em><strong>irb(main):032:0> Question.first.comments << comment</strong></em></mark>
+<strong>BEGIN<%= `say "BEGIN" ` %></strong><br>
+D, [2017-09-28T21:50:03.829975 #66204] DEBUG -- :   SQL (0.6ms)  INSERT INTO "comments" ("comment_author_id", "commentable_type", "commentable_id", "comment_body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["comment_author_id", 3], ["commentable_type", "Question"], ["commentable_id", 1], ["comment_body", "This is some shit eh?"], ["created_at", "2017-09-29 02:50:03.828280"], ["updated_at", "2017-09-29 02:50:03.828280"]]<br>
+D, [2017-09-28T21:50:03.830914 #66204] DEBUG -- :    (0.5ms)  COMMIT<br>
+D, [2017-09-28T21:50:03.832663 #66204] DEBUG -- :   Comment Load (0.5ms)  SELECT  "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2 LIMIT $3  [["commentable_id", 1], ["commentable_type", "Question"], ["LIMIT", 11]]<br>
+=> #ActiveRecord::Associations::CollectionProxy [#Comment id: 2, comment_author_id: 3, commentable_type: "Question", commentable_id: 1, comment_body: "fuck yeah bud", created_at: "2017-09-29 02:42:17", updated_at: "2017-09-29 02:42:17", #Comment id: 3, comment_author_id: 2, commentable_type: "Question", commentable_id: 1, comment_body: "Well, shit", created_at: "2017-09-29 02:47:40", updated_at: "2017-09-29 02:47:40">, #Comment id: 4, comment_author_id: 3, commentable_type: "Question", commentable_id: 1, comment_body: "This is some shit eh?", created_at: "2017-09-29 02:50:03", updated_at: "2017-09-29 02:50:03"]><br>
+<mark><strong><em>Did you see how that comment got added automatically? We didn't even need to run comment.save. Or nothin' like that.</em></strong></mark>
+  </footer>
+</div>
