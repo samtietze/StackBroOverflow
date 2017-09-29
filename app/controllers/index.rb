@@ -1,4 +1,5 @@
 get '/' do
+
   redirect '/mitchells_voicemail'
 end
 
