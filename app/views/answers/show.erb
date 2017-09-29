@@ -1,0 +1,10 @@
+<h3>Answers</h3>
+
+<ul>
+<% @answers.each do |answer| %>
+  <li><%= answer.answer_body %></li>
+  <li><%=answer.answer_author_id%></li>
+  <li><%=answer.created_at%></li>
+
+<% end %>
+</ul>
