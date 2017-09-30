@@ -2,4 +2,8 @@
 
 <%= erb :_errors, locals: { errors: @errors } %>
 
-<%= erb :'questions/_question_new_form', locals: { question: @question } %>
+<form action='/questions' method='post'>
+  <%= erb :'questions/_question_fields', locals: { question: question } %>
+  <input type='submit' value='Ask away, man'>
+</form>
+
