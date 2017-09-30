@@ -1,5 +1,9 @@
 <h2>Bro, lay it all out</h2>
 
 <%= erb :_errors, locals: { errors: @errors } %>
-
-<%= erb :'questions/_question_new_form', locals: { question: @question } %>
+<div class=".main">
+  <form id="question-form" action='/questions' method='post'>
+    <%= erb :'questions/_question_fields', locals: { question: @question } %>
+    <input type='submit' value='Ask away, man'>
+  </form>
+</div>

@@ -23,8 +23,10 @@ $(document).ready(function() {
     });
 
     upVote.done(function(response){
+    console.log("this is the response:")
      console.log(response.value)
      console.log($(this))
+     console.log($voted_answer.siblings('.votable-value'))
      $voted_answer.siblings(".votable-value").text(response.value)
     });
 
@@ -32,6 +34,50 @@ $(document).ready(function() {
       alert("I'm sorry, this feature did not work. Please try again.")
     });
   });
+
+  $("#new-question").on("click", function(){
+    event.preventDefault();
+    var $link = $(this);
+    var url = $link.attr("href");
+    console.log("this works")
+
+    var newQuestion = $.ajax({
+      url: url
+    });
+
+    newQuestion.done(function(response){
+      $link.hide();
+      $(".main").prepend(response)
+      alert("fuck yea bro this shit works")
+
+    });
+
+  });
+
+  $(".main").on("submit", "#question-form", function(){
+      event.preventDefault();
+      var $form = $(this);
+      var url = $form.attr("action");
+      var method = $form.attr("method");
+      var data = $form.serialize();
+      console.log("this works")
+
+
+      var request = $.ajax({
+        url: url,
+        method: method,
+        data: data
+      });
+
+      request.done(function(response){
+        $form.remove();
+        $("#new-question").show();
+        $(".question-page-container ul").append(response);
+        alert("AMERICA....FUCK YEA")
+      });
+
+  });
+
 });
 
 
