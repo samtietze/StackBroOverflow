@@ -1,0 +1,23 @@
+
+<div class="answer-container border-bottom">
+  <%= answer.vote_count %>
+  <%= erb :'votes/_vote_buttons', locals: { answer: answer } %>
+  <p class="answer-text">
+    <%= answer.answer_body %>
+  </p>
+  <span>Answered on: <%= answer.created_at %></span>
+  <div class="answerer-profile-box">
+    <a href="users/<%= answer.answer_author.id %>"><%= answer.answer_author.username %></a>
+  </div>
+  <!-- begin ANSWER COMMENTS -->
+  <div class="answer-comments-container">
+    <ul>
+      <% answer.comments.each do |comment| %>
+      <div class="answer-comment-box">
+        <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
