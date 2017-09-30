@@ -7,7 +7,11 @@ end
 get '/questions/new' do
   redirect '/questions' unless logged_in?
   @question = Question.new
-  erb :'questions/new'
+  if request.xhr?
+    erb :'questions/new',  layout: false, locals: {question: @question}
+  else
+    erb :"/questions/new"
+  end
 end
 
 post '/questions' do
