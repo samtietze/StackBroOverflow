@@ -1,7 +1,7 @@
 
 <div class="answer-container border-bottom">
-  <%= answer.vote_count %>
-  <%= erb :'votes/_vote_buttons', locals: { answer: answer } %>
+  <span><%= answer.vote_count %></span>
+  <%= erb :'votes/_answer_vote_buttons', locals: { answer: answer } %>
   <p class="answer-text">
     <%= answer.answer_body %>
   </p>
