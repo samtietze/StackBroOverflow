@@ -28,6 +28,7 @@
 <!-- begin ANSWERS -->
   <div class="question-answer-list-container">
     <% @question.answers.each do |answer| %>
+
       <div class="answer-container border-bottom">
         <span class="votable-value"><%= answer.vote_count %></span>
         <%= erb :'votes/_vote_buttons', locals: { answer: answer } %>
@@ -50,6 +51,9 @@
         </div>
 
       </div>
+
+    <%= erb :'/answers/_answer_container', locals: { answer: answer} %>
+
     <% end %>
   </div>
 
