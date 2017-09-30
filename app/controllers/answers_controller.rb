@@ -1,14 +1,18 @@
-
-get '/questions/:question_id/answers' do
-  authenticate!
-  @answers = Answers.find_by(id: params[:id])
-  erb :'answers/show'
-end
+# get '/questions/:question_id/answers' do
+#   authenticate!
+#   @answers = Answers.find_by(id: params[:id])
+#   erb :'answers/show'
+# end
 
 get '/questions/:question_id/answers/new' do
   authenticate!
    @question = Question.find(params[:question_id])
-  erb :'answers/new'
+   @answer = Answer.new
+    if request.xhr?
+      # partial
+    else
+      erb :'answers/new'
+    end
 end
 
 post '/questions/:question_id/answers' do
@@ -16,12 +20,19 @@ post '/questions/:question_id/answers' do
   @question = Question.find(params[:question_id])
   @answer = Answer.new(params[:answer])
     if @answer.save
-      # what here
-      redirect "/questions/#{@question.id}/answers"
+      if request.xhr?
+        # erb :"partial"
+      else
+        redirect "/questions/#{@question.id}"
+      end
     else
-    @errors = @answer.errors.full_messages
-    # erb "" what here
-    erb :'answers/new'
+      @errors = @answer.errors.full_messages
+      if request.xhr?
+        status 422
+        erb :"_errors", layout: false, locals: { errors: @errors }
+      else
+        erb :'answers/new'
+      end
     end
 end
 
