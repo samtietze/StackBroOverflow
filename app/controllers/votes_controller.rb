@@ -5,5 +5,19 @@ post '/answers/:answer_id/votes' do
   @vote.value = vote_value
   @vote.save
   @answer.votes << @vote
-  redirect "/questions/#{@answer.question_id}"
+
+  if request.xhr?
+    content_type = :json
+    { value: @answer.vote_count }.to_json
+  else
+    redirect "/questions/#{@answer.question_id}"
+  end
 end
+
+
+
+    # request.done(function(response){
+    #   var selector = "#" + response.article_id;
+    #   $(selector).find(".points").text(response.votes);
+    #   console.log(response)
+    # });
