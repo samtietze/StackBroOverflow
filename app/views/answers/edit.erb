@@ -1,16 +1,9 @@
 <h3>Edit answer</h3>
 
-<% if @errors %>
 <%= erb :"_errors", locals: {errors: @errors} %>
-<% end %>
 
-<form method="POST" action="/answers/<%= @answer.id %>">
+<form class="edit-answer-form" method="POST" action="/questions/<%= @answer.question_id %>/answers">
   <input type="hidden" name="_method" value="PUT">
-  <div class="form-field">
-    <input type="text" name="answer[body]" value="<%= @answer.body %>">
-  </div>
-  <div class="form-field">
-    <textarea rows="15" cols="75" name="answer[description]"><%= @answer.body %></textarea>
-  </div>
-  <input type="submit">
+    <%= erb :'answers/_answer_form_fields', locals: { answer: @answer } %>
+  <input type="submit" value="save">
 </form>
