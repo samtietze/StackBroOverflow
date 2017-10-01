@@ -1,9 +1,10 @@
 <h3>Comments for the Bro Post</h3>
 
 <%= erb :"_errors", locals: {errors: @errors} %>
-
-<form method="POST" action='/questions/<%= @question.id %>/comments'>
+<div class="new-comment">
+<form id="question-comment-form" method="POST" action='/questions/<%= @question.id %>/comments'>
   <%= erb :'comments/_comment_form_fields', locals: { comment: @comment } %>
   <input type="submit" value="Post it, bro">
 </form>
+</div>
 

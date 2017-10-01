@@ -48,7 +48,6 @@ $(document).ready(function() {
     newQuestion.done(function(response){
       $link.hide();
       $(".main").prepend(response)
-      alert("fuck yea bro this shit works")
 
     });
 
@@ -73,10 +72,55 @@ $(document).ready(function() {
         $form.remove();
         $("#new-question").show();
         $(".question-page-container ul").append(response);
-        alert("AMERICA....FUCK YEA")
+        console.log(response)
       });
 
   });
+
+  $("#new-question-comment").on("click", function(){
+     event.preventDefault();
+      var $link = $(this);
+      var url = $link.attr("href");
+      console.log("this works");
+
+      var questionComment = $.ajax({
+        url: url
+    });
+
+      questionComment.done(function(response){
+        $link.remove();
+        $(".question-comments-list-container").prepend(response)
+        alert("Bros")
+
+    });
+  });
+
+    $(".new-comment").on("submit", "#question-comment-form", function(){
+      event.preventDefault();
+      var $form = $(this);
+      var url = $form.attr("action");
+      var method = $form.attr("method");
+      var data = $form.serialize();
+      console.log("this works")
+
+
+      var request = $.ajax({
+        url: url,
+        method: method,
+        data: data
+      });
+
+      request.done(function(response){
+        $form.remove();
+        $("#new-question-comment").show();
+        $(".question-comments-list-container li").append(response);
+        console.log(response)
+      });
+
+  });
+
+
+
 
 });
 
