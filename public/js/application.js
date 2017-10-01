@@ -48,7 +48,6 @@ $(document).ready(function() {
     newQuestion.done(function(response){
       $link.hide();
       $(".main").prepend(response)
-      alert("fuck yea bro this shit works")
 
     });
 
@@ -73,11 +72,62 @@ $(document).ready(function() {
         $form.remove();
         $("#new-question").show();
         $(".question-page-container ul").append(response);
-        alert("AMERICA....FUCK YEA")
+        console.log(response)
+      });
+
+  });
+// LINK TO CLICK ON
+  $("#new-question-comment").on("click", function(){
+     event.preventDefault();
+      var $link = $(this);
+      var url = $link.attr("href");
+      console.log("this works");
+
+      var questionComment = $.ajax({
+        url: url
+    });
+
+// CONTAINER THAT THE NEW FORM WILL APPEAR ON
+      questionComment.done(function(response){
+        $link.remove();
+        $(".question-comments-list-container").prepend(response)
+
+    });
+  });
+// CLASS OF THE NEW COMMENT FORM. SUBMIT ON ID OF THE FORM OF THE NEW COMMENT FORM
+    $(".new-comment").on("submit", "#question-comment-form", function(){
+      event.preventDefault();
+      var $form = $(this);
+      var url = $form.attr("action");
+      var method = $form.attr("method");
+      var data = $form.serialize();
+      console.log("this works")
+
+
+      var request = $.ajax({
+        url: url,
+        method: method,
+        data: data
+      });
+// APPEND TO THE APPROPIATE CONTAINER. USE LI or UI TO FIND THE LIST
+      request.done(function(response){
+        $form.remove();
+        $("#new-question-comment").show();
+        $(".question-comments-list-container li").append(response);
+        console.log(response)
       });
 
   });
 
 });
 
+// ##VIDEO/FUN STUFF
+$('a.introVid').click(function(){
+  autoPlayVideo('VIDEO_ID_HERE','450','283');
+});
+
+function autoPlayVideo(vcode, width, height){
+  "use strict";
+  $("#videoContainer").html('<iframe width="'+width+'" height="'+height+'" src="https://www.youtube.com/embed/'+vcode+'?autoplay=1&loop=1&rel=0&wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>');
+}
 
