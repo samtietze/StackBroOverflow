@@ -1,1 +1,17 @@
+<h2><%= @user.username %></h2>
 
+<div id="avatar-container">
+  <img src="<%= @user.profile_picture %>" alt="Profile picture">
+</div>
+
+<div id="user-bio">
+  <p>
+    Bro bio here!
+  </p>
+</div>
+
+<div id="user-stats">
+  <span id="answers"><%= @user.user_answer_count %></span> <span class="stat-category">answers</span> ||
+  <span id="questions"><%= @user.user_question_count %></span> <span class="stat-category">questions</span> ||
+  <span id="comments"><%= @user.user_comment_count %></span> <span class="stat-category">comments</span>
+</div>
