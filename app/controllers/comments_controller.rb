@@ -2,18 +2,32 @@ get '/questions/:question_id/comments/new' do
   authenticate!
   @question = Question.find(params[:question_id])
   @comment = Comment.new
-  erb :'comments/new_question_comment'
+  if request.xhr?
+    erb :'comments/new_question_comment', layout: false, locals: { comment: @comment, question: @question }
+  else
+    erb :'comments/new_question_comment'
+  end
 end
 
 post '/questions/:question_id/comments' do
   authenticate!
-  if @question = Question.find(params[:question_id])
-    @comment = Comment.new(comment_body: params[:user_input], comment_author_id: current_user.id)
+  @question = Question.find(params[:question_id])
+  @comment = Comment.new(comment_body: params[:user_input], comment_author_id: current_user.id)
     @question.comments << @comment
-    redirect :"questions/#{@question.id}"
+  if @comment.persisted?
+    if request.xhr?
+      erb :'comments/_question_comment_container', layout: false, locals: { question: @question, comment: @comment }
+    else
+      redirect :"questions/#{@question.id}"
+    end
   else
     @errors = @comment.errors.full_messages
-    erb :'comments/new_question_comment'
+    if request.xhr?
+      status 422
+      erb :'comments/new_question_comment', layout: false, locals: { errors: @errors, comment: @comment, question: @question }
+    else
+      erb :'comments/new_question_comment'
+    end
   end
 end
 
