@@ -132,15 +132,34 @@ $(document).ready(function() {
 
         answerComment.done(function(response){
           $link.remove();
-          console.log(response)
-          $(".answer-comment-box").prepend(response)
-          alert("this shit works")
+          $(".answer-container").prepend(response)
         });
-
-
 
   });
 
+//     $(".answer-comment").on("submit", "#answer-comment-form", function(){
+//       event.preventDefault();
+//       var $form = $(this);
+//       var url = $form.attr("action");
+//       var method = $form.attr("method");
+//       var data = $form.serialize();
+//       console.log("this works")
+
+
+//       var request = $.ajax({
+//         url: url,
+//         method: method,
+//         data: data
+//       });
+// // APPEND TO THE APPROPIATE CONTAINER. USE LI or UI TO FIND THE LIST
+//       request.done(function(response){
+//         $form.remove();
+//         $(".answer-comments > a").show();
+//         $(".question-comments-list-container li").append(response);
+//         console.log(response)
+//       });
+
+//   });
 
 
 
