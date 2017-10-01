@@ -1,3 +1,5 @@
+
+<span class="question-votable-value"><%= @question.vote_count %> </span>
 <%= erb :'votes/_question_vote_buttons', locals: {question: @question} %>
 <h2><%= @question.subject %></h2>
 
@@ -27,7 +29,7 @@
 <!-- begin ANSWERS -->
   <div class="question-answer-list-container">
     <% @question.answers.each do |answer| %>
-      <%= erb :'/answers/_answer_container', locals: { answer: answer} %>
+      <%= erb :'/answers/_answer_container', locals: { answer: answer } %>
 
     <% end %>
   </div>

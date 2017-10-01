@@ -2,9 +2,9 @@
   <div class="question-comment-box">
     <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
 <!-- THIS DOESNT WORK! -->
-    <span class="question-votable-value"><%= question.vote_count %> </span>
+    <span class="question-votable-value"><%= comment.vote_count %> </span>
     <!-- ########################### -->
-    <%= erb :'votes/_question_vote_buttons', locals: {question: question} %>
+    <%= erb :'votes/_comment_vote_buttons', locals: {comment: comment } %>
   </div>
   <% if comment.comment_author == current_user %>
   <div class="question-comment-links">
