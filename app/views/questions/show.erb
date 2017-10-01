@@ -1,7 +1,10 @@
 
 <h2 id="test-subject"><%= @question.subject %></h2>
 <%= erb :'votes/_question_vote_buttons', locals: {question: @question} %>
+
 <h2><%= @question.subject %></h2>
+<span class="votable-value"><%= @question.vote_count %> </span>
+<%= erb :'votes/_question_vote_buttons', locals: {question: @question} %>
 
 
 <div class="question-page-container">
@@ -20,6 +23,8 @@
       <ul>
         <% @question.comments.each do |comment| %>
           <%= erb :'/comments/_question_comment_container', locals: { comment: comment, question: @question } %>
+          <span class="votable-value"><%= comment.vote_count %> </span>
+          <%= erb :'votes/_comment_vote_buttons', locals: {comment: comment } %>
         <% end %>
       </ul>
 <!-- THROW A CLASS FOR NEW A TAGS IN HERE: -->
@@ -30,7 +35,7 @@
 <!-- begin ANSWERS -->
   <div class="question-answer-list-container">
     <% @question.answers.each do |answer| %>
-      <%= erb :'/answers/_answer_container', locals: { answer: answer} %>
+      <%= erb :'/answers/_answer_container', locals: { answer: answer } %>
 
     <% end %>
   </div>
