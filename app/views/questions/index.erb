@@ -1,8 +1,7 @@
 <% if logged_in? %>
-  <a href="/questions/new">You got a question, bro?</a>
+  <a id="new-question" href="/questions/new">You got a question, bro?</a>
 <% end %>
 <h2>Top Questions</h2>
-
 <% @questions.each do |question| %>
   <div class="question-summary-container">
     <h3><a href="/questions/<%= question.id %>"><%= question.subject %></a></h3>
@@ -13,4 +12,5 @@
       <span><%= question.created_at %> || <a href="/users/<%= question.question_author.id %>"><%= question.question_author.username %></a></span>
     </div>
   </div>
+
 <% end %>
