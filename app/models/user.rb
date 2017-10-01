@@ -1,3 +1,5 @@
+require 'Faker'
+
 class User < ApplicationRecord
   # include BCrypt
 
@@ -9,6 +11,24 @@ class User < ApplicationRecord
   validates :username, :email, { presence: true }
   validates :email, :username, { uniqueness: true }
   validate :validate_password
+
+  before_save :include_avatar
+
+  def include_avatar
+    self.profile_picture = Faker::LoremPixel.image("300x300")
+  end
+
+  def user_question_count
+    Question.where(question_author_id: self.id).count
+  end
+
+  def user_answer_count
+    Answer.where(answer_author_id: self.id).count
+  end
+
+  def user_comment_count
+    Comment.where(comment_author_id: self.id).count
+  end
 
   def password
     @password ||= BCrypt::Password.new(encrypted_password)

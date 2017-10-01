@@ -1,0 +1,9 @@
+<form  class="vote" action="/questions/<%= question.id %>/votes" method="post">
+  <input type="hidden" name="vote" value="1">
+  <input type="submit" value='upvote'>
+</form>
+
+<form class="vote" action="/questions/<%= question.id %>/votes" method="post">
+  <input type="hidden" name="vote" value="-1">
+  <input type="submit" value='downvote'>
+</form>
