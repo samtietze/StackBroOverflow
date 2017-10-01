@@ -1,3 +1,4 @@
+<%= erb :'votes/_question_vote_buttons', locals: {question: @question} %>
 <h2><%= @question.subject %></h2>
 
 <div class="question-page-container">
@@ -8,7 +9,7 @@
     </p>
 
     <span>Asked on: <%= @question.created_at %></span>
-    <div class="question-author-box">
+     <div class="question-author-box">
       <span><a href="/users/<%= @question.question_author.id %>"><%= @question.question_author.username %></a></span>
     </div>
 <!-- begin QUESTION COMMENTS -->
@@ -27,6 +28,7 @@
   <div class="question-answer-list-container">
     <% @question.answers.each do |answer| %>
       <%= erb :'/answers/_answer_container', locals: { answer: answer} %>
+
     <% end %>
   </div>
 

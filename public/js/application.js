@@ -126,7 +126,6 @@ $('a.introVid').click(function(){
   autoPlayVideo('VIDEO_ID_HERE','450','283');
 });
 
-
 function autoPlayVideo(vcode, width, height){
   "use strict";
   $("#videoContainer").html('<iframe width="'+width+'" height="'+height+'" src="https://www.youtube.com/embed/'+vcode+'?autoplay=1&loop=1&rel=0&wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>');
