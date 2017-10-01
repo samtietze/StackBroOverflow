@@ -76,7 +76,7 @@ $(document).ready(function() {
       });
 
   });
-
+// LINK TO CLICK ON
   $("#new-question-comment").on("click", function(){
      event.preventDefault();
       var $link = $(this);
@@ -87,14 +87,14 @@ $(document).ready(function() {
         url: url
     });
 
+// CONTAINER THAT THE NEW FORM WILL APPEAR ON
       questionComment.done(function(response){
         $link.remove();
         $(".question-comments-list-container").prepend(response)
-        alert("Bros")
 
     });
   });
-
+// CLASS OF THE NEW COMMENT FORM. SUBMIT ON ID OF THE FORM OF THE NEW COMMENT FORM
     $(".new-comment").on("submit", "#question-comment-form", function(){
       event.preventDefault();
       var $form = $(this);
@@ -109,7 +109,7 @@ $(document).ready(function() {
         method: method,
         data: data
       });
-
+// APPEND TO THE APPROPIATE CONTAINER. USE LI or UI TO FIND THE LIST
       request.done(function(response){
         $form.remove();
         $("#new-question-comment").show();
@@ -119,8 +119,16 @@ $(document).ready(function() {
 
   });
 
-
-
-
 });
+
+// ##VIDEO/FUN STUFF
+$('a.introVid').click(function(){
+  autoPlayVideo('VIDEO_ID_HERE','450','283');
+});
+
+
+function autoPlayVideo(vcode, width, height){
+  "use strict";
+  $("#videoContainer").html('<iframe width="'+width+'" height="'+height+'" src="https://www.youtube.com/embed/'+vcode+'?autoplay=1&loop=1&rel=0&wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>');
+}
 
