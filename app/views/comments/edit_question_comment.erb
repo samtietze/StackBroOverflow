@@ -1,0 +1,8 @@
+<h3>You need to edit that comment? Sure thing, bro:</h3>
+
+<%= erb :"_errors", locals: {errors: errors} %>
+
+<form method="POST" action='/questions/<%= @question.id %>/comments'>
+  <%= erb :'comments/_comment_form_fields', locals: { comment: @comment } %>
+  <input type="submit" value="Save">
+</form>
