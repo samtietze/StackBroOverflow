@@ -1,6 +1,9 @@
 <li>
   <div class="question-comment-box">
     <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
+<!-- THIS DOESNT WORK! -->
+    <span class="question-votable-value"><%= question.vote_count %> </span>
+    <!-- ########################### -->
     <%= erb :'votes/_question_vote_buttons', locals: {question: question} %>
   </div>
   <% if comment.comment_author == current_user %>
