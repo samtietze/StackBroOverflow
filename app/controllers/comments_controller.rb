@@ -1,3 +1,6 @@
+
+
+
 get '/questions/:question_id/comments/new' do
   authenticate!
   @question = Question.find_by(id: params[:question_id])
@@ -84,14 +87,33 @@ delete '/questions/:question_id/comments/:id' do
   end
 end
 
+# get '/answers/:answer_id/comments/new' do
+#   authenticate!
+#   @answer = Answer.find_by(id: params[:answer_id])
+#   @comment = Comment.new
+#   if @answer
+#     if request.xhr?
+#       ep 'hey fuckface'
+#       ep 'lollll'
+#       erb :'comments/new_answer_comment', layout: false, locals: { comment: @comment, answer: @answer }
+#     # else
+#     #   erb :'comments/new_answer_comment'
+#     end
+#   end
+# end
+
 get '/answers/:answer_id/comments/new' do
   authenticate!
-  @answer = Answer.find(params[:answer_id])
+  @answer = Answer.find_by(id: params[:answer_id])
   @comment = Comment.new
-  if request.xhr?
-    erb :'comments/new_answer_comment', layout: false, locals: { answer: @answer, comment: @comment }
+  if @answer
+    if request.xhr?
+      erb :'comments/new_answer_comment', layout: false, locals: { comment: @comment, answer: @answer }
+    else
+      erb :'comments/new_answer_comment'
+    end
   else
-    erb :'comments/new_answer_comment'
+    redirect :not_authorized
   end
 end
 

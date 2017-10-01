@@ -119,6 +119,32 @@ $(document).ready(function() {
 
   });
 
+
+    $(".question-answer-list-container").on("click", ".answer-comments > a", function(){
+        event.preventDefault();
+        var $link = $(this);
+        var url = $link.attr("href");
+        console.log("this works");
+
+        var answerComment = $.ajax({
+          url: url
+    });
+
+        answerComment.done(function(response){
+          $link.remove();
+          console.log(response)
+          $(".answer-comment-box").prepend(response)
+          alert("this shit works")
+        });
+
+
+
+  });
+
+
+
+
+
 });
 
 // ##VIDEO/FUN STUFF

@@ -9,6 +9,9 @@
   <div class="answerer-profile-box">
     <a href="users/<%= answer.answer_author.id %>"><%= answer.answer_author.username %></a>
   </div>
+  <div class="answer-comments">
+    <a href="/answers/<%= answer.id %>/comments/new">Comment on an answer</a>
+  </div>
   <!-- begin ANSWER COMMENTS -->
   <div class="answer-comments-container">
     <ul>
@@ -22,8 +25,6 @@
   </div>
 
 
-<div>
-  <a id="new-answer-comment" href="/answers/<%= answer.id %>/comments/new">Comment on an answer</a>
-</div>
+
 </div>
 
