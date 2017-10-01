@@ -16,8 +16,14 @@
       <div class="answer-comment-box">
         <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
       </div>
+      <%= erb :'answer/_answer_comment_container', locals: { answer: answer, comment: comment } %>
       <% end %>
     </ul>
   </div>
 
+
+<div>
+  <a id="new-answer-comment" href="/answers/<%= answer.id %>/comments/new">Comment on an answer</a>
 </div>
+</div>
+

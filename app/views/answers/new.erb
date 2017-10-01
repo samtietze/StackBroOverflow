@@ -2,7 +2,7 @@
 
 <%= erb :"_errors", locals: {errors: @errors} %>
 
-<form class="new-answer-form" method="POST" action="/questions/<%= @answer.question_id %>/answers">
+<form class="new-answer-form" method="POST" action="/questions/<%= @question.id %>/answers">
   <%= erb :'answers/_answer_form_fields', locals: { answer: @answer } %>
   <input type="submit" value="submit answer">
 </form>

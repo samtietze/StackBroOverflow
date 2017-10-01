@@ -16,8 +16,3 @@ end
 
 
 
-    # request.done(function(response){
-    #   var selector = "#" + response.article_id;
-    #   $(selector).find(".points").text(response.votes);
-    #   console.log(response)
-    # });
