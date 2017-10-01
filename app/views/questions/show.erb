@@ -15,15 +15,13 @@
     <div class="question-comments-list-container">
       <ul>
         <% @question.comments.each do |comment| %>
-          <div class="question-comment-box">
-            <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
-          </div>
+          <%= erb :'/comments/_question_comment_container', locals: { comment: comment, question: @question } %>
         <% end %>
       </ul>
+<!-- THROW A CLASS FOR NEW A TAGS IN HERE: -->
+      <a href="/questions/<%= @question.id %>/comments/new">Write a comment</a>
     </div>
-    <% if authorized?(@question.question_author) %>
-      <%= erb :'questions/_question_edit_form', locals: { question: @question } %>
-    <% end %>
+
   </div>
 <!-- begin ANSWERS -->
   <div class="question-answer-list-container">
