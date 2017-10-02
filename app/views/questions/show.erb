@@ -1,11 +1,7 @@
 
-<h2 id="test-subject"><%= @question.subject %></h2>
-<%= erb :'votes/_question_vote_buttons', locals: {question: @question} %>
-
 <h2><%= @question.subject %></h2>
 <span class="votable-value"><%= @question.vote_count %> </span>
 <%= erb :'votes/_question_vote_buttons', locals: {question: @question} %>
-
 
 <div class="question-page-container">
 <!-- begin QUESTIONS -->
