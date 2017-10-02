@@ -119,6 +119,54 @@ $(document).ready(function() {
 
   });
 
+
+    $(".question-answer-list-container").on("click", ".answer-comments > a", function(){
+        event.preventDefault();
+        var $link = $(this);
+        var url = $link.attr("href");
+        console.log("this works");
+
+        var answerComment = $.ajax({
+          url: url
+    });
+
+        answerComment.done(function(response){
+          $link.closest(".answer-container").prepend(response)
+          $link.remove();
+        });
+
+  });
+
+    $(".answer-container").on("submit", "#answer-comment-form", function(event){
+      event.preventDefault();
+      var $form = $(this);
+      console.log($form)
+      var url = $form.attr("action");
+      var method = $form.attr("method");
+      var data = $form.serialize();
+      console.log("this works")
+
+
+      var request = $.ajax({
+        url: url,
+        method: method,
+        data: data
+      });
+
+      request.done(function(response){
+        $form.remove();
+        console.log($form)
+
+        $(".answer-comment > a").show();
+        $(".question-comments-list-container li").append(response);
+        console.log(response)
+      });
+
+  });
+
+
+
+
 });
 
 // ##VIDEO/FUN STUFF

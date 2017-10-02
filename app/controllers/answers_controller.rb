@@ -9,7 +9,7 @@ get '/questions/:question_id/answers/new' do
   @question = Question.find(params[:question_id])
   @answer = Answer.new
   if request.xhr?
-    erb :'answers/new'
+    erb :'answers/new', layout: false, locals: {answer: @answer, question: @question}
   else
     erb :'answers/new'
   end

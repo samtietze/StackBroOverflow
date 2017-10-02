@@ -9,6 +9,9 @@
   <div class="answerer-profile-box">
     <a href="users/<%= answer.answer_author.id %>"><%= answer.answer_author.username %></a>
   </div>
+  <div class="answer-comments">
+    <a href="/answers/<%= answer.id %>/comments/new">Comment on an answer</a>
+  </div>
   <!-- begin ANSWER COMMENTS -->
   <div class="answer-comments-container">
     <ul>
@@ -16,8 +19,12 @@
       <div class="answer-comment-box">
         <span><%= comment.comment_body %></span> – <span><a href="/users/<%= comment.comment_author.id %>"><%= comment.comment_author.username %></a> at <%= comment.created_at %></span>
       </div>
+      <%= erb :'comments/_answer_comment_container', locals: { answer: answer, comment: comment } %>
       <% end %>
     </ul>
   </div>
 
+
+
 </div>
+
