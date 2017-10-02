@@ -120,6 +120,7 @@ end
 post '/answers/:answer_id/comments' do
   authenticate!
   @answer = Answer.find_by(id: params[:answer_id])
+  p params
   @comment = Comment.new(comment_body: params[:user_input], comment_author_id: current_user.id)
   @answer.comments << @comment
   if @comment.persisted?

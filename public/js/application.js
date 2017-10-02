@@ -131,35 +131,38 @@ $(document).ready(function() {
     });
 
         answerComment.done(function(response){
+          $link.closest(".answer-container").prepend(response)
           $link.remove();
-          $(".answer-container").prepend(response)
         });
 
   });
 
-//     $(".answer-comment").on("submit", "#answer-comment-form", function(){
-//       event.preventDefault();
-//       var $form = $(this);
-//       var url = $form.attr("action");
-//       var method = $form.attr("method");
-//       var data = $form.serialize();
-//       console.log("this works")
+    $(".answer-container").on("submit", "#answer-comment-form", function(event){
+      event.preventDefault();
+      var $form = $(this);
+      console.log($form)
+      var url = $form.attr("action");
+      var method = $form.attr("method");
+      var data = $form.serialize();
+      console.log("this works")
 
 
-//       var request = $.ajax({
-//         url: url,
-//         method: method,
-//         data: data
-//       });
-// // APPEND TO THE APPROPIATE CONTAINER. USE LI or UI TO FIND THE LIST
-//       request.done(function(response){
-//         $form.remove();
-//         $(".answer-comments > a").show();
-//         $(".question-comments-list-container li").append(response);
-//         console.log(response)
-//       });
+      var request = $.ajax({
+        url: url,
+        method: method,
+        data: data
+      });
 
-//   });
+      request.done(function(response){
+        $form.remove();
+        console.log($form)
+
+        $(".answer-comment > a").show();
+        $(".question-comments-list-container li").append(response);
+        console.log(response)
+      });
+
+  });
 
 
 
