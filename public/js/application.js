@@ -158,7 +158,7 @@ $(document).ready(function() {
         console.log($form)
 
         $(".answer-comment > a").show();
-        $(".question-comments-list-container li").append(response);
+        $(".question-answer-list-container .answerer-profile-box").insertAfter(response);
         console.log(response)
       });
 

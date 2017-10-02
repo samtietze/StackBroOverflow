@@ -148,5 +148,14 @@ input#question-up{
   background-color: #fff4a3;
 }
 
+.main{
+  background-color: #fff4a3;
+}
 
+a:visited {
+  color: #117bf3;
+}
 
+a:link {
+  color: red;
+}
