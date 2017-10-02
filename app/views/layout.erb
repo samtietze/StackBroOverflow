@@ -21,25 +21,35 @@
   <title>Bro</title>
 </head>
 <body>
-    <div class="container">
+    <!-- <div class="container"> -->
     <nav>
-      <h1><a href="/">BroOverflow</a></h1>
-      <ul>
+      <h1 class="header"><a id="header-link" href="/">BroOverflow</a></h1>
+     <h3 id="header-text"> Learn, Share, Build
+Each month, over 50 million Bros come to Stack BroOverflow to learn, share their knowledge.
+
+Join the world’s largest bro community.</h3>
+      </nav>
         <!-- Figure out layout -->
+        <div class="form-container">
         <% if current_user %>
+       <ul class="login-links">
         <li><a href="/users/<%= current_user.id %>">Hello, <%= current_user.username %></a></li>
         <li><form method="POST" action="/sessions">
               <input type="hidden" name="_method" value="DELETE" />
               <input type="submit" class="button" value="Logout" />
             </form>
         </li>
+      </ul>
+       </div>
         <% else %>
+      <ul class="nav-links">
         <li><a href="/sessions/new">Login</a></li>
         <li><a href="/users/new">Sign Up</a></li>
         <% end %>
       </ul>
-    </nav>
-    <div class="main">
+
+
+    <!-- <div class="main"> -->
   <%= yield %>
 </body>
 </html>
